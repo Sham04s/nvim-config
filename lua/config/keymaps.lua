@@ -16,7 +16,7 @@ map("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- Cursor
-map("n", "<leader>M", function()
+map("n", "<leader>um", function()
   if vim.o.mouse == "" then
     vim.cmd("set mouse=nvichar")
     vim.notify("Mouse enabled")
