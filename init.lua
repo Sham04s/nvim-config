@@ -19,18 +19,6 @@ require("lazyvim").setup({
   colorscheme = "catppuccin",
 })
 
-require("notify").setup({
-  render = "compact",
-  stages = "slide",
-  fps = 100,
-  max_width = function()
-    return math.floor(vim.o.columns * 0.5)
-  end,
-  max_height = function()
-    return math.floor(vim.o.lines * 0.5)
-  end,
-})
-
 require("neo-tree").setup({
   enable_git_status = true,
   enable_diagnostics = true,
