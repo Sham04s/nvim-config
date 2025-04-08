@@ -4,7 +4,8 @@
 local nu = true
 vim.g.snacks_animate = false
 
-if vim.loop.os_uname().sysname == "Windows_NT" then
+local is_win = vim.loop.os_uname().sysname == "Windows_NT"
+if is_win then
   if nu then
     vim.opt.shell = "nu"
     vim.opt.shellcmdflag = "-c"
@@ -26,8 +27,11 @@ end
 
 if vim.g.neovide then
   vim.g.neovide_refresh_rate = 100
-  vim.o.guifont = "Mononoki Nerd Font"
-  -- vim.o.guifont = "JetBrains Mono"
+  if is_win then
+    vim.o.guifont = "Liga mononoki"
+    -- vim.o.guifont = "Mononoki Nerd Font"
+    -- vim.o.guifont = "JetBrains Mono"
+  end
   vim.g.neovide_scale_factor = 0.9
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_hide_mouse_when_typing = true

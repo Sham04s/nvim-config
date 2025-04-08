@@ -37,6 +37,8 @@ return {
       layerSet({ "n", "x" }, "<s-up>", function() mc.lineSkipCursor(-1) end, { desc = "Skip cursor backwards" })
       layerSet({ "n", "x" }, "<s-down>", function() mc.lineSkipCursor(1) end, { desc = "Skip cursor forward" })
 
+      layerSet({ 'n', "x" }, "m", mc.matchAllAddCursors, { desc = "Add cursors to all matches" })
+
       -- Delete the main cursor.
       layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor)
 
