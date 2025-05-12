@@ -2,11 +2,8 @@
 require("config.lazy")
 
 require("mini.operators").setup({
-  replace = {
-    prefix = "cr",
-  },
   exchange = {
-    prefix = "cx",
+    prefix = "ge",
   },
 })
 
@@ -26,6 +23,10 @@ require("neo-tree").setup({
 
 require("lspconfig").gdscript.setup({})
 
+require("conform").formatters_by_ft = {
+  gdscript = { "gdformat" },
+}
+
 require("dap").adapters.godot = {
   type = "server",
   host = "127.0.0.1",
@@ -42,16 +43,80 @@ require("dap").adapters.godot = {
 --   },
 -- }
 
-require("conform").formatters_by_ft = {
-  gdscript = { "gdformat" },
-}
-
--- require("lualine").setup({
---   sections = {
---     lualine_c = {
---       LazyVim.lualine.root_dir(),
---       { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
---       { LazyVim.lualine.pretty_path() },
---     },
---   },
--- })
+require("dapui").setup(
+  {
+    controls = {
+      element = "repl",
+      enabled = true,
+      icons = {
+        disconnect = "",
+        pause = "",
+        play = "",
+        run_last = "",
+        step_back = "",
+        step_into = "",
+        step_out = "",
+        step_over = "",
+        terminate = ""
+      }
+    },
+    element_mappings = {},
+    expand_lines = true,
+    floating = {
+      border = "single",
+      mappings = {
+        close = { "q", "<Esc>" }
+      }
+    },
+    force_buffers = true,
+    icons = {
+      collapsed = "",
+      current_frame = "",
+      expanded = ""
+    },
+    layouts = { {
+      elements = {
+        {
+          id = "scopes",
+          size = 0.4
+        },
+        {
+          id = "watches",
+          size = 0.35
+        },
+        {
+          id = "stacks",
+          size = 0.15
+        },
+        {
+          id = "breakpoints",
+          size = 0.1
+        },
+      },
+      position = "left",
+      size = 30
+    }, {
+      elements = { {
+        id = "repl",
+        size = 0.5
+      }, {
+        id = "console",
+        size = 0.5
+      } },
+      position = "bottom",
+      size = 10
+    } },
+    mappings = {
+      edit = "e",
+      expand = { "<CR>", "<2-LeftMouse>" },
+      open = "o",
+      remove = "d",
+      repl = "r",
+      toggle = "t"
+    },
+    render = {
+      indent = 1,
+      max_value_lines = 100
+    }
+  }
+)

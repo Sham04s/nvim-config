@@ -1,5 +1,6 @@
 return {
   "jake-stewart/multicursor.nvim",
+  commit = "7d3b16f",
   config = function()
     local mc = require("multicursor-nvim")
     mc.setup()
