@@ -26,21 +26,36 @@ map("n", "<leader>um", function()
   end
 end, { desc = "Toggle mouse" })
 
--- neovide transparency
+-- neovide opacity
 if vim.g.neovide then
-  local function changeTransparency(value)
-    local final = vim.g.neovide_transparency + value
+  local function changeOpacity(value)
+    local final = vim.g.neovide_opacity + value
     final = math.max(0, final)
     final = math.min(1, final)
-    vim.g.neovide_transparency = final
+    vim.g.neovide_opacity = final
   end
+
+  local function changeScale(by)
+    local newScale = vim.g.neovide_scale_factor + by
+    vim.g.neovide_scale_factor = math.max(0.2, math.min(newScale, 2))
+  end
+
   map("n", "<C-S-kPlus>", function()
-    changeTransparency(0.05)
+    changeOpacity(0.05)
   end, { desc = "Increase background opacity" })
+
   map("n", "<C-S-kMinus>", function()
-    changeTransparency(-0.05)
+    changeOpacity(-0.05)
   end, { desc = "Decrease background opacity" })
+
   map("n", "<F11>", function()
     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
   end, { desc = "Toggle fullscreen" })
+
+  map({ "n", "i", "x", "v" }, "<C-kMinus>", function()
+    changeScale(-0.1)
+  end)
+  map({ "n", "i", "x", "v" }, "<C-kPlus>", function()
+    changeScale(0.1)
+  end)
 end

@@ -4,7 +4,6 @@ end
 
 return {
   "nvim-java/nvim-java",
-  event = "VeryLazy",
   ft = "java",
   vscode = false,
   config = function()
@@ -54,5 +53,5 @@ return {
         },
       },
     })
-  end
+  end,
 }

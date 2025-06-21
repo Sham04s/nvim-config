@@ -16,7 +16,7 @@ if is_win then
   else
     vim.o.shell = "pwsh.exe"
     vim.o.shellcmdflag =
-    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command $PSStyle.OutputRendering = 'PlainText';"
+      "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command $PSStyle.OutputRendering = 'PlainText';"
     vim.o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
     vim.o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
     vim.o.shellquote = ""
@@ -32,7 +32,7 @@ if vim.g.neovide then
     -- vim.o.guifont = "Mononoki Nerd Font"
     -- vim.o.guifont = "JetBrains Mono"
   end
-  vim.g.neovide_scale_factor = 0.9
+  vim.g.neovide_scale_factor = 1
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_cursor_animation_length = 0.02

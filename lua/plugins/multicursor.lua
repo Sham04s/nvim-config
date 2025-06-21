@@ -1,12 +1,11 @@
 return {
   "jake-stewart/multicursor.nvim",
-  commit = "7d3b16f",
+  event = "VeryLazy",
   config = function()
     local mc = require("multicursor-nvim")
     mc.setup()
 
     local set = vim.keymap.set
-
 
     -- Add and remove cursors with control + left click.
     set("n", "<c-leftmouse>", mc.handleMouse)
@@ -27,18 +26,34 @@ return {
       layerSet({ "n", "x" }, "<C-right>", mc.nextCursor)
 
       -- Add or skip adding a new cursor by matching word/selection
-      layerSet({ "n", "x" }, "n", function() mc.matchAddCursor(1) end, { desc = "Add cursor at next match" })
-      layerSet({ "n", "x" }, "s", function() mc.matchSkipCursor(1) end, { desc = "Skip cursor to next match" })
-      layerSet({ "n", "x" }, "N", function() mc.matchAddCursor(-1) end, { desc = "Add cursor at previous match" })
-      layerSet({ "n", "x" }, "S", function() mc.matchSkipCursor(-1) end, { desc = "Skip cursor to previous match" })
+      layerSet({ "n", "x" }, "n", function()
+        mc.matchAddCursor(1)
+      end, { desc = "Add cursor at next match" })
+      layerSet({ "n", "x" }, "s", function()
+        mc.matchSkipCursor(1)
+      end, { desc = "Skip cursor to next match" })
+      layerSet({ "n", "x" }, "N", function()
+        mc.matchAddCursor(-1)
+      end, { desc = "Add cursor at previous match" })
+      layerSet({ "n", "x" }, "S", function()
+        mc.matchSkipCursor(-1)
+      end, { desc = "Skip cursor to previous match" })
 
       -- Add or skip cursor above/below the main cursor.
-      layerSet({ "n", "x" }, "<c-up>", function() mc.lineAddCursor(-1) end, { desc = "Add cursor above" })
-      layerSet({ "n", "x" }, "<c-down>", function() mc.lineAddCursor(1) end, { desc = "Add cursor below" })
-      layerSet({ "n", "x" }, "<s-up>", function() mc.lineSkipCursor(-1) end, { desc = "Skip cursor backwards" })
-      layerSet({ "n", "x" }, "<s-down>", function() mc.lineSkipCursor(1) end, { desc = "Skip cursor forward" })
+      layerSet({ "n", "x" }, "<c-up>", function()
+        mc.lineAddCursor(-1)
+      end, { desc = "Add cursor above" })
+      layerSet({ "n", "x" }, "<c-down>", function()
+        mc.lineAddCursor(1)
+      end, { desc = "Add cursor below" })
+      layerSet({ "n", "x" }, "<s-up>", function()
+        mc.lineSkipCursor(-1)
+      end, { desc = "Skip cursor backwards" })
+      layerSet({ "n", "x" }, "<s-down>", function()
+        mc.lineSkipCursor(1)
+      end, { desc = "Skip cursor forward" })
 
-      layerSet({ 'n', "x" }, "m", mc.matchAllAddCursors, { desc = "Add cursors to all matches" })
+      layerSet({ "n", "x" }, "m", mc.matchAllAddCursors, { desc = "Add cursors to all matches" })
 
       -- Delete the main cursor.
       layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor)
@@ -62,5 +77,5 @@ return {
     hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
     hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
     hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
-  end
+  end,
 }
