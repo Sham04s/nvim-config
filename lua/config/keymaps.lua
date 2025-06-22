@@ -8,12 +8,20 @@ map("n", "<leader>o", "o<Esc>")
 map("n", "<leader>O", "O<Esc>")
 
 -- Move Lines
-map("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-map("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
-map("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+local MiniMove = require("mini.move")
+map({ "n", "i" }, "<M-Down>", function()
+  MiniMove.move_line("down")
+end, { desc = "Move Down" })
+map({ "n", "i", "v" }, "<M-Up>", function()
+  MiniMove.move_line("up")
+end, { desc = "Move Up" })
+
+map("v", "<A-Down>", function()
+  MiniMove.move_selection("down")
+end, { desc = "Move Down" })
+map("v", "<A-Up>", function()
+  MiniMove.move_selection("up")
+end, { desc = "Move Up" })
 
 -- Cursor
 map("n", "<leader>um", function()
