@@ -39,19 +39,28 @@ return {
         mc.matchSkipCursor(-1)
       end, { desc = "Skip cursor to previous match" })
 
+      local function addCursor(dir)
+        return function()
+          mc.lineAddCursor(dir)
+        end
+      end
+
+      local function skipCursor(dir)
+        return function()
+          mc.lineSkipCursor(dir)
+        end
+      end
+
       -- Add or skip cursor above/below the main cursor.
-      layerSet({ "n", "x" }, "<c-up>", function()
-        mc.lineAddCursor(-1)
-      end, { desc = "Add cursor above" })
-      layerSet({ "n", "x" }, "<c-down>", function()
-        mc.lineAddCursor(1)
-      end, { desc = "Add cursor below" })
-      layerSet({ "n", "x" }, "<s-up>", function()
-        mc.lineSkipCursor(-1)
-      end, { desc = "Skip cursor backwards" })
-      layerSet({ "n", "x" }, "<s-down>", function()
-        mc.lineSkipCursor(1)
-      end, { desc = "Skip cursor forward" })
+      layerSet({ "n", "x" }, "<c-up>", addCursor(-1), { desc = "Add cursor above" })
+      layerSet({ "n", "x" }, "<c-down>", addCursor(1), { desc = "Add cursor below" })
+      layerSet({ "n", "x" }, "<s-up>", skipCursor(-1), { desc = "Skip cursor backwards" })
+      layerSet({ "n", "x" }, "<s-down>", skipCursor(1), { desc = "Skip cursor forward" })
+
+      layerSet({ "n", "x" }, "<c-k>", addCursor(-1), { desc = "Add cursor above" })
+      layerSet({ "n", "x" }, "<c-j>", addCursor(1), { desc = "Add cursor below" })
+      layerSet({ "n", "x" }, "<s-k>", skipCursor(-1), { desc = "Skip cursor backwards" })
+      layerSet({ "n", "x" }, "<s-j>", skipCursor(1), { desc = "Skip cursor forward" })
 
       layerSet({ "n", "x" }, "m", mc.matchAllAddCursors, { desc = "Add cursors to all matches" })
 

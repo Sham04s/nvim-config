@@ -67,3 +67,11 @@ if vim.g.neovide then
     changeScale(0.1)
   end)
 end
+
+vim.keymap.set("n", "K", function()
+  local ok, err = pcall(vim.lsp.buf.hover)
+  if not ok then
+    print("Hover failed: ", err)
+    return
+  end
+end, { buffer = true, silent = true })
