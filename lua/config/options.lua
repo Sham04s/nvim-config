@@ -3,6 +3,7 @@
 -- Add any additional options here
 local nu = true
 vim.g.snacks_animate = false
+vim.g.loaded_man_lua = 1
 
 local is_win = vim.loop.os_uname().sysname == "Windows_NT"
 if is_win then

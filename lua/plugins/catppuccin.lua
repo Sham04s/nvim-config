@@ -1,6 +1,6 @@
 local opts = {
   flavour = "auto",
-  transparent_background = true
+  transparent_background = true,
 }
 
 if vim.g.neovide then
@@ -9,5 +9,5 @@ end
 
 return {
   "catppuccin",
-  opts = opts
+  opts = opts,
 }
