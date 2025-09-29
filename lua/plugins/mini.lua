@@ -1,10 +1,10 @@
 local operators = {
-  "echasnovski/mini.operators",
+  "nvim-mini/mini.operators",
   version = "*",
 }
 
 local move = {
-  "echasnovski/mini.move",
+  "nvim-mini/mini.move",
   event = "VeryLazy",
   opts = {
     mappings = {

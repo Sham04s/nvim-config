@@ -19,7 +19,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
-    { "echasnovski/mini.operators", version = "*", vscode = true },
+    { "nvim-mini/mini.operators", version = "*", vscode = true },
     { import = "plugins" },
   },
   defaults = {

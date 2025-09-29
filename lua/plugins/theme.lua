@@ -1,0 +1,1 @@
+/home/sneyder/.config/omarchy/current/theme/neovim.lua

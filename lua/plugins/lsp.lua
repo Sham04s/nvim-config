@@ -1,18 +1,5 @@
 -- if true then return {} end
 
-local function config()
-  local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-  parser_config.c3 = {
-    install_info = {
-      url = "https://github.com/c3lang/tree-sitter-c3",
-      files = { "src/parser.c", "src/scanner.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-      branch = "main",
-    },
-  }
-
-  require("lspconfig").c3_lsp.setup({})
-end
-
 return {
   "neovim/nvim-lspconfig",
   opts = function()
@@ -71,6 +58,11 @@ return {
           },
         },
       },
+
+      folds = {
+        enabled = true,
+      },
+
       -- options for vim.lsp.buf.format
       -- `bufnr` and `filter` is handled by the LazyVim formatter,
       -- but can be also overridden when specified
@@ -168,5 +160,5 @@ return {
     }
     return ret
   end,
-  config = config,
+  -- config = config,
 }

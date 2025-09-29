@@ -7,7 +7,4 @@ if vim.g.neovide then
   opts.transparent_background = false
 end
 
-return {
-  "catppuccin",
-  opts = opts,
-}
+return {}

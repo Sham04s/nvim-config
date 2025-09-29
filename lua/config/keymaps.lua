@@ -23,7 +23,7 @@ map("v", "<A-Up>", function()
   MiniMove.move_selection("up")
 end, { desc = "Move Up" })
 
--- Cursor
+-- Multicursors
 map("n", "<leader>um", function()
   if vim.o.mouse == "" then
     vim.cmd("set mouse=nvichar")
@@ -34,7 +34,7 @@ map("n", "<leader>um", function()
   end
 end, { desc = "Toggle mouse" })
 
--- neovide opacity
+-- neovide
 if vim.g.neovide then
   local function changeOpacity(value)
     local final = vim.g.neovide_opacity + value
@@ -67,11 +67,3 @@ if vim.g.neovide then
     changeScale(0.1)
   end)
 end
-
-vim.keymap.set("n", "K", function()
-  local ok, err = pcall(vim.lsp.buf.hover)
-  if not ok then
-    print("Hover failed: ", err)
-    return
-  end
-end, { buffer = true, silent = true })

@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "set commentstring=//%s",
 })
 
-vim.api.nvim_create_autocmd("QuitPre", {
-  callback = function()
-    os.execute('rm  "C:\\Users\\sneyd\\AppData\\Local\\nvim-data\\shada\\main.shada.tmp.*"')
-  end,
-})
+-- vim.api.nvim_create_autocmd("QuitPre", {
+--   callback = function()
+--     os.execute('rm  "C:\\Users\\sneyd\\AppData\\Local\\nvim-data\\shada\\main.shada.tmp.*"')
+--   end,
+-- })
