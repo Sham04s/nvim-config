@@ -1,6 +1,6 @@
 return {
   "nvim-java/nvim-java",
-  ft = "java",
+  ft = { "java" },
   enabled = true,
   vscode = false,
   config = function()

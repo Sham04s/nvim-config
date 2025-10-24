@@ -1,7 +1,9 @@
 return {
   "frankroeder/parrot.nvim",
   dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
-  cmd = "PrtStatus",
+  -- cmd = "PrtStatus",
+  lazy = false, -- Add this line to load on startup
+  enabled = false,
   opts = {
 
     chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<leader>Pr" },
